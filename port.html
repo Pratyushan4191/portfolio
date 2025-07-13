@@ -1,0 +1,135 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar with Slideshow & Gallery</title>
+    <link rel="stylesheet" href="port.css">
+  </head>
+  <body>
+    <!-- Container tags {div,span,header,footer,main}is acutally a block of codes where all the codes have same style conditions, inline and block level elements, only used for  grouping orther tags-->
+    <header id="intro"> <!-- Container Tag -->
+      <h1>Ayush</h1>
+      <h4>Web Development and UI/UX Designer</h4>
+    </header>
+    <nav><!-- Container Tag -->
+    <ul>
+      <li><a href="#experience">Experience</a></li> 
+      <!-- href="link" goes to website based on url  while href=#id_name goes to the place depending on the id name -->
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certification">Certification</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="#contact-me">Contact Me</a></li>
+      <li><a href="#admin-login" onClick="showAdminLogin()">Admin Login</a></li>
+    </ul>
+      <button id="switch-theme">Toggle Theme</button>
+    </nav>
+    <main><!-- Container Tag -->
+      <!-- div is a blockline tag, where the content is created as a block
+      where span is an inline comment which remains in the same line as the content we have given-->
+      <section class="section-style" id="experience"><!-- Container Tag -->
+      <h2>Expereience</h2>
+        <!-- class and id are used to styple only specifc tags, but difference is if we have 3 different tags, if we use class then we can assign all the 3 tags with same class name but id should be unique-->
+        <div>
+      <h3>Intern At</h3>
+      <p>Intern -ShadowFox</p>
+          <p>UI/UX Design
+        </div>
+        <div>
+          <h3>Intern At- Yhills</h3>
+          <p>Full Stack Development</p>
+          </div>
+      </section>
+      <section class="section-style" id="education">
+      <h2>Education</h2>
+        <div>
+      <h3>BTech</h3>
+      <p>Amrita Vishwa Vidhyapeetam, Chennai</p>
+      <p>8.95</p>
+        </div>
+        <div>
+          <h3>Intermediate</h3>
+          <p>Tirumala Junior Collage, Vizag</p>
+          <p>966/1000</p>
+          </div>
+      </section>
+      <section class="section-style" id="certification"><!-- Container Tag -->
+      <h2>Certification</h2>
+        <div>
+      <h3>SEMESTER COMPLETION</h3>
+      <p>Amrita Vishwa Vidhyapeetam, Chennai</p>
+          <p>BTECH 1st SEM</p>
+        </div>
+        <div>
+          <h3>InternShip</h3>
+          <p>ShadowFox</p>
+          <p>UI/UX Design</p>
+          </div>
+      </section>
+      <section class="section-style" id="hobbies"><!-- Container Tag -->
+      <h2>Hobbies</h2>
+        <div>
+      <h3>Indoor</h3>
+      <p>Reading Novels</p>
+      <p>Writing Short Stories</p>
+        </div>
+        <div>
+          <h3>Outdoor</h3>
+          <p>Badminton</p>
+          </div>
+      </section>
+      <section class="section-style" id="contact-me">
+        <h2>Contact Me</h2>
+        <form>
+          <div>
+          <label>Name:</label>
+          <input type="text" placeholder="Ayush"></input><br>
+          </div>
+        <div>
+          <label> Email:</label>
+        <input type:"email" placeholder="Ayush@gmail.com"> </input><br>
+        </div>
+      <div>
+        <label>Message:</label>
+      <textarea placeholder="Enter your message">
+      </textarea>
+      </div>
+      <button>Send</button>
+        </form>
+      </section>
+  <section class="section-style" id="admin-login"><!-- ADIM LOGIN PAGE-->
+    <h2>Admin Login</h2>
+    <form>
+      <div>
+        <label>Username:</label>
+        <input type="text" placeholder="UserName"></input>
+      </div>
+      <div>
+        <label>Password:</label>
+        <input type="password" placeholder="Password"></input>
+      </div>
+  <button> Submit</button>
+    </form>
+  </section>
+<section class="section-style" id="user-responses"><!-- Mostly trying to set the no.of message i can get from Contact Me Section
+  <div>
+    Name:
+    Email:
+    Message:
+    
+      Name:
+    Email:
+    Message:
+    
+      Name:
+    Email:
+    Message:
+    
+  </div> -->
+  <h2>User Responses</h2>
+  <div>
+  </div>
+</section>
+<script src="port.js"></script>
+    </main>
+  </body>
+</html>
