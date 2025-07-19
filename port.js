@@ -60,4 +60,27 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+//task 4 
+//storing the information in the contact me form in the back end
+
+let controlOfContactmeForm = document.getElementById("contact-me-form");
+
+controlOfContactmeForm.addEventListener('submit', function(e) {
+  e.preventDefault(); // Prevent default form submission
+
+  // Grab values from input fields
+  let name = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let message = document.getElementById('msg').value.trim();
+  let date= new Date().toISOString();
+  //getting date from the system
+  // Create a response object
+  let response = {
+    name,email,message,date
+  };
+
+  console.log("User Response:", response);
+ 
+  // You can now send this `response` object to a backend API via fetch/ajax
+});
 
