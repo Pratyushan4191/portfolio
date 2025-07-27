@@ -1,104 +1,77 @@
-/*function greetuser()
-{
-  alert("Function is working" + user);
-}
-let user = prompt("Please enter your name...");
-greetuser(user);
-let count = 0;
-while (count <= 5)
-{
-  console.log(count);
-  count++;
-}*/
-
-//Task 1 as soon as we click admin login, the admin login must appear
-let controlOfAmdinLogin = document.getElementById("admin-login");
+// Task 1: Show Admin Login when clicked
+let controlOfAdminLogin = document.getElementById("admin-login");
 
 function showAdminLogin() {
-  // .style to get control of the css
-  // .property to get control over specific property
-  controlOfAmdinLogin.style.display = "block";
+  controlOfAdminLogin.style.display = "block";
 }
 
-//Task 2 Toggle theme
+// Task 2: Toggle Theme
 let controlOfThemeBtn = document.getElementById("switch-theme");
 controlOfThemeBtn.addEventListener('click', function () {
   document.body.classList.toggle("dark-theme");
 });
 
-//task 3 make admin login work
-// Make sure JS runs only after HTML is fully loaded
+// Task 3: Admin Login Validation
 window.addEventListener("DOMContentLoaded", function () {
-
-  // Get the form element
   let controlOfAdminForm = document.getElementById("admin-form");
 
-  // Add event listener for form submission
   controlOfAdminForm.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent form from refreshing the page
+    e.preventDefault();
 
-    // Stored (hardcoded) admin credentials
     let storedUsername = "admin";
     let storedPassword = "password";
 
-    // Get values entered by the user
     let username = document.getElementById("usrnme").value;
     let password = document.getElementById("pswd").value;
 
-    // Validate credentials
     if (storedUsername === username && storedPassword === password) {
       alert("Access Granted!");
-
-      // Hide the login form and show the user section
       document.getElementById("admin-login").style.display = "none";
       document.getElementById("user-response").style.display = "block";
-
-      // You can call a function here to show more data, etc.
+      displayUserMessages();
     } else {
       alert("Access Denied");
     }
   });
 
-  //task 4 store user responses from the contact me section in the back end
+  // Task 4: Store User Responses from Contact Form
   let controlOfContactmeForm = document.getElementById("contact-me-form");
 
   controlOfContactmeForm.addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
-    // Grab values from input fields
     let name = document.getElementById('name').value.trim();
     let email = document.getElementById('email').value.trim();
     let message = document.getElementById('msg').value.trim();
-    let date = new Date().toISOString();
-    //getting date from the system
+    let date = new Date().toLocaleString();
 
-    // Create a response object
-    let response = {
-      name,
-      email,
-      message,
-      date
-    };
+    let response = { name, email, message, date };
 
-    console.log("User Response:", response);
-
-    //respone to the back end
-    //once u run this code fro the first time it will create a dummydata base
-    // for every other time there is no need to create
-
-    // Initialize dummy database from localStorage or create a new empty one
-    // empty list act as a dummy data base that stores data in the local storage of browser
     let DummyDatabase = JSON.parse(localStorage.getItem('tempDB')) || [];
-    //JSON.parse converts JSON structure to JS object (getting data from DB),DB sends you data in JSON format
-    //JSON stringify convert JS object to JSON (Sending data from JS to DB,needs to be converted to JSON)
-
-    //to put items in the JS list
     DummyDatabase.push(response);
-
-    // Save the updated database back to localStorage
     localStorage.setItem('tempDB', JSON.stringify(DummyDatabase));
 
-    // Log the current dummy database
-    console.log(DummyDatabase);
+    alert("Thank you for your message, we will get back to you shortly");
+    this.reset();
   });
 });
+
+// Display User Messages after Admin Login
+function displayUserMessages() {
+  let ControlOfUserMessages = document.getElementById("user-messages");
+  ControlOfUserMessages.innerHTML = ""; // Clear previous
+
+  let DummyDatabase = JSON.parse(localStorage.getItem('tempDB')) || [];
+
+  DummyDatabase.forEach(response => {
+    let ControlOfResponseElement = document.createElement('div');
+    ControlOfResponseElement.innerHTML = `
+      <p><strong>Name:</strong> ${response.name}</p>
+      <p><strong>Email:</strong> ${response.email}</p>
+      <p><strong>Message:</strong> ${response.message}</p>
+      <p><strong>Date:</strong> ${response.date}</p>
+      <hr>
+    `;
+    ControlOfUserMessages.append(ControlOfResponseElement);
+  });
+}
